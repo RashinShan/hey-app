@@ -7,13 +7,14 @@ from django.conf.urls.static import static
 urlpatterns = [
 
 
-    path('',views.signup_OTPfunc,name='signup_OTP' ),
+    path('',views.reg,name='sign_up' ),
     path('home/',views.homefunc,name='home' ),
     path('chat/',views.chatfunc,name='chat' ),
     path('login/',views.loginfunc,name='login' ),
     path('signup_OTP/',views.signup_OTPfunc,name='signup_OTP' ),
-    path('signup/',views.signupfunc,name='signup' ),
     path('userlist/',views.userlistfunc,name='userlist' ),
+    path('register/',views.register,name='register' ),
+    path('signup/',views.signupfunc,name='signup' ),
     path('sendemail/', views.sendemail, name="sendemail"),
     path('verifyotp/', views.verifyotp, name="verifyotp"),
 ]

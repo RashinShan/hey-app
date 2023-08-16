@@ -1,4 +1,5 @@
 
+from .models import User, Message
 from django.shortcuts import render, redirect
 from django.contrib import messages
 import sib_api_v3_sdk 
@@ -10,8 +11,13 @@ from django.http import HttpResponse
 def chatfunc (request):
     return render(request,'chat.html')
 
+
 def homefunc (request):
      return render(request,'home.html')
+
+def reg(request):
+     return render(request, 'signup.html')
+
 
 def loginfunc (request):
      return render(request,'login.html')
@@ -19,12 +25,24 @@ def loginfunc (request):
 def signup_OTPfunc (request):
      return render(request,'signup_OTP.html')
 
-
-def signupfunc (request):
-     return render(request,'signup.html')
-
 def userlistfunc (request):
      return render(request,'userlist.html')
+
+def register(request):
+     firstname = request.POST['firstname']
+     lastname = request.POST['lastname']
+     dob = request.POST['dob']
+     email = request.POST['email']
+     username = request.POST['uname']
+     password = request.POST['password']
+
+
+
+     new_user = User.objects.create(firstname=firstname, lastname=lastname, dob=dob, email=email, username=username, password=password)
+     new_user.save()
+     return HttpResponse('Data enter Successfully')
+
+
 
 
 def otpgenarator():
@@ -46,7 +64,7 @@ def sendemail(request):
        
        
         configuration = sib_api_v3_sdk.Configuration()
-        configuration.api_key['api-key'] = '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'
+        configuration.api_key['api-key'] = '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'
         api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
         subject = subject
         html_content = message
@@ -73,6 +91,7 @@ def verifyotp(request):
              return redirect('signup_OTP')
         
     return render(request, 'home.html', locals())          
+
 
 
 

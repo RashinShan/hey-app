@@ -14,26 +14,24 @@
         <div class="lg:w-1/3 2xl:w-1/4 p-10 bg-white">
           <h1 class="text-center text-3xl font-bold py-5">Welcome to <span class="text-rose-300">HEY</span></h1>
             <div class="space-y-5">
-              <h1 class="text-xl font-semibold">Email Verification</h1>
-               
-               <form class="flex flex-col space-y-5" action="{% url 'sendemail' %}" method="post" enctype="multipart/form-data">
-                 {% csrf_token %}
-              <input type="text" placeholder="Email Address" class="outline-0 px-5 py-2 bg-gray-100" name="email">
+              <h1 class="text-xl font-semibold">Mobile Number Verification</h1>
+                <form class="flex flex-col space-y-5">
+
+
+              <input type="text" placeholder="Mobile Number" class="outline-0 px-5 py-2 bg-gray-100">
               <button class="p-2 bg-rose-300 text-xl text-black font-bold rounded-md drop-shadow-md hover:bg-rose-400">Send OTP</button>
+              
               <div class="flex justify-between items-center">
                 <a href="#" class="text-sm">If you not recived OTP code.</a>
               </div>
               <button class="p-2 bg-gray-300 text-xl text-black font-bold rounded-md drop-shadow-md hover:bg-rose-400">Re Send OTP</button>
-            </form>
 
-              <form class="flex flex-col space-y-5" action="{% url 'verifyotp' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <a href="#" class="text-sm">If you  recived OTP code verify it here .</a>
-              <input type="OTP Number" placeholder="enter your OTP Number" class="outline-0 px-5 py-2 bg-gray-100" name="otp">
+              <input type="OTP Number" placeholder="OTP Number" class="outline-0 px-5 py-2 bg-gray-100">
               <button class="p-2 bg-rose-300 text-xl text-black font-bold rounded-md drop-shadow-md hover:bg-rose-400">Verify</button>
-              <button type="submit" class="btn btn-primary">verify</button>
+              
+                
             </form>
-            {% for i in messages %}<script>alert("{{i}}");</script>{% endfor %}
+            
           </div>
         </div>
       </div>
