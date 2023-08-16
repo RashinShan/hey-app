@@ -4,7 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup page</title>
+    <script src="./script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+        <link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+  rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+<script src="https://cdn.tailwindcss.com/3.3.0"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
+    },
+    corePlugins: {
+      preflight: false,
+    },
+  };
+</script>
 </head>
 <body>
     <div class="w-full h-screen bg-gray-100 flex justify-center items-center">
@@ -17,10 +40,10 @@
         <!--photo-->
         <input type="text" id="" name="firstname" placeholder="First Name" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
         <input type="text" id="" name="lastname" placeholder="Last Name" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
-        <input type="text" id="" name="dob" placeholder="Date of Birth" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
+        <div class="relative mb-3" data-te-datepicker-init data-te-inline="true">
+          <input type="text" class="peer block min-h-[auto] w-full rounded px-3 py-[0.32rem]  duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200  [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 outline-0 px-5 py-2 bg-gray-100 w-full mb-3 z-5" placeholder="Select a date" />
+        </div>
         <input type="text" id="" name="email" placeholder="Email" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
-    </fieldset>
-    <fieldset>
         <input type="text" id="" name="uname" placeholder="User Name" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
         <input type="password" id="" name="password" placeholder="Password" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
         <input type="password" id="" name="reenterpassword" placeholder="Re-Enter Password" required class="outline-0 px-5 py-2 bg-gray-100 w-full mb-3">
@@ -30,5 +53,6 @@
 </div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 </body>
 </html>
