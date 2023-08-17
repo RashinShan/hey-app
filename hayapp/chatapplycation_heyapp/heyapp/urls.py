@@ -14,4 +14,6 @@ urlpatterns = [
     path('userlist/',views.userlistfunc,name='userlist' ),
     path('register/',views.register,name='register' ),
     path('gohome/',views.gohome,name='gohome' ),
+    path('sendemail/', views.sendemail, name="sendemail"),
+    path('verifyotp/', views.verifyotp, name="verifyotp"),
 ]
