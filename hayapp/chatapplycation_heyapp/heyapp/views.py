@@ -51,11 +51,15 @@ def gohome(request):
      mail = request.POST['email_log']
      pwd = request.POST['password_log']
 
-     usercheck = User.objects.get(email=mail)
-     if usercheck.password == pwd:
-          return render(request, 'home.html')
+     if User.objects.filter(email=mail).exists():
+          usercheck = User.objects.get(email=mail)
+          if usercheck.password == pwd:
+               return render(request, 'home.html')
+          else:
+               messages.success(request, "Password Incorrect")
+               return render(request, 'login.html')
      else:
-          messages.success(request, "Username or Password Incorrect")
+          messages.success(request, "Email is Not Registered")
           return render(request, 'login.html')
 
 
