@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>userlist</title>
+</head>
+<body>
+
+  <ul>
+    
+</ul>
+
+
+
+
+    
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>userlist</title>
+</head>
+<body>
+
+ 
+       
+    
+{% for user in users %}
+<div class="flex flex-row py-4 px-2 justify-center items-center bg-gray-300 hover:bg-rose-200">
+<div class="w-1/4">
+  <img src="https://thumbs.dreamstime.com/z/d-icon-avatar-cartoon-hipster-character-stylish-man-beard-close-up-portrait-isolated-transparent-png-background-generative-274383697.jpg?w=992" class="object-cover h-12 w-12 rounded-full" alt=""/>
+</div>
+<div class="w-full">
+  <button id="username"><div class="text-lg font-semibold">{{ user.firstname }} </div></button>
+  
+</div>
+</div>
+{% endfor %}
+
+
+    
+</body>
+</html>
