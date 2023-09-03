@@ -9,6 +9,7 @@ import random
 
 
 
+
 def homefunc (request):
      return render(request,'home.html')
 
@@ -118,19 +119,20 @@ def userlistfunc(request):
      return render(request, 'userlist.html', {'users': users})
 
    
+ 
 
-def messagelistfunc(request):
-     
-    chat = Message.objects.all()
+def messagelistfunc(request, receivername): 
+    chat = Message.objects.filter( recever=receivername)
     return render(request, 'chat.html', {'chats': chat})
 
 
 def sendmsg(request):
      msg=request.POST['message']
-     msgsender="pramod"
-     receiver="rashin"
+     msgsender="rashin"
+     receiver="pramod"
 
      new_message=Message.objects.create( message=msg,sender=msgsender,recever=receiver)
+     
      new_message.save()
      return HttpResponse('Message sent successfully')
 

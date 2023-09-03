@@ -18,4 +18,5 @@ urlpatterns = [
     path('verifyotp/', views.verifyotp, name="verifyotp"),
     path('messagelistfunc/', views.messagelistfunc, name="messagelistfunc"),
     path('sendmsg/', views.sendmsg, name="sendmsg"),
+    path('messagelistfunc/<str:receivername>/', views.messagelistfunc, name='messagelistfunc'),
 ]

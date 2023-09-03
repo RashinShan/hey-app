@@ -42,16 +42,23 @@
        
     
 {% for user in users %}
-<div class="flex flex-row py-4 px-2 justify-center items-center bg-gray-300 hover:bg-rose-200">
 <div class="w-1/4">
+  <p>{{ user.username }}</p>
   <img src="https://thumbs.dreamstime.com/z/d-icon-avatar-cartoon-hipster-character-stylish-man-beard-close-up-portrait-isolated-transparent-png-background-generative-274383697.jpg?w=992" class="object-cover h-12 w-12 rounded-full" alt=""/>
 </div>
+
+<div class="flex flex-row py-4 px-2 justify-center items-center bg-gray-300 hover:bg-rose-200">
+
 <div class="w-full">
-  <button id="username"><div class="text-lg font-semibold">{{ user.firstname }} </div></button>
-  
+  <a class="user-button" href="{% url 'messagelistfunc' user.username %}">View Messages for {{ user.username }}</a>
+
+
 </div>
 </div>
+
 {% endfor %}
+
+
 
 
     

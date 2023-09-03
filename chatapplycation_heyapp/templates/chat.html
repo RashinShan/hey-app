@@ -11,13 +11,15 @@
 </head>
 <body>
 	  
+  {% if chats %}
+     {% for msg in chats %}
   
-     
-  
-      
+         <br> {{ msg.message }}    
 
-     
-
+      {% endfor %}
+  {% else %}
+    <p>No messages found for </p>
+  {% endif %}
 
       <div class="fixed flex justify-between w-full bg-gray-200" style="bottom: 0px;">
         <textarea
@@ -47,7 +49,7 @@
       </div>
 
 
-
+  
 
   
 <script>
