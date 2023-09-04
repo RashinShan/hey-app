@@ -24,29 +24,30 @@ def signup_OTPfunc (request):
      return render(request,'signup_OTP.html')
 
 def register(request):
-     firstname = request.POST['firstname']
-     lastname = request.POST['lastname']
-     dob = request.POST['dob']
-     email = request.POST['email']
-     username = request.POST['uname']
-     password = request.POST['password']
-     repass = request.POST['reenterpassword']
+     if request.method == 'POST':
+          firstname = request.POST.get('firstname')
+          lastname = request.POST.get('lastname')
+          dob = request.POST.get('dob')
+          email = request.POST.get('email')
+          username = request.POST.get('uname')
+          password = request.POST.get('password')
+          repass = request.POST.get('reenterpassword')
 
 
-     if User.objects.filter(email=email).exists():
-          messages.success(request, "Email is already registered.")
-     else:
-          if password != repass:
-               messages.success(request, "Password is Not matching")
+          if User.objects.filter(email=email).exists():
+               messages.success(request, "Email is already registered.")
           else:
-               new_user = User.objects.create(firstname=firstname, lastname=lastname, dob=dob, email=email, username=username, password=password)
-               new_user.save()
-               return render(request,'login.html')
+               if password != repass:
+                    messages.success(request, "Password is Not matching")
+               else:
+                    new_user = User.objects.create(firstname=firstname, lastname=lastname, dob=dob, email=email, username=username, password=password)
+                    new_user.save()
+                    return render(request,'signup_OTP.html')
      return render(request, 'signup.html')
 
 def gohome(request):
-     mail = request.POST['email_log']
-     pwd = request.POST['password_log']
+     mail = request.POST.get('email_log')
+     pwd = request.POST.get('password_log')
 
      if User.objects.filter(email=mail).exists():
           usercheck = User.objects.get(email=mail)
@@ -56,7 +57,7 @@ def gohome(request):
                messages.success(request, "Password Incorrect")
                return render(request, 'login.html')
      else:
-          messages.success(request, "Email is Not Registered")
+          messages.success(request, "Email is Not Identified")
           return render(request, 'login.html')
 
 
@@ -83,7 +84,7 @@ def sendemail(request):
 
           configuration = sib_api_v3_sdk.Configuration()
           configuration.api_key[
-               'api-key'] = '<enter your send in blue api key>'
+               'api-key'] = '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'
           api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
           subject = subject
           html_content = message
@@ -122,14 +123,15 @@ def userlistfunc(request):
  
 
 def messagelistfunc(request, receivername): 
+    request.session['receivername'] = receivername
     chat = Message.objects.filter( recever=receivername)
     return render(request, 'chat.html', {'chats': chat})
 
 
 def sendmsg(request):
      msg=request.POST['message']
-     msgsender="rashin"
-     receiver="pramod"
+     msgsender=""
+     receiver=request.session.get('receivername', None)
 
      new_message=Message.objects.create( message=msg,sender=msgsender,recever=receiver)
      
