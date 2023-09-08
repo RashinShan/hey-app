@@ -84,7 +84,7 @@ def sendemail(request):
 
           configuration = sib_api_v3_sdk.Configuration()
           configuration.api_key[
-               'api-key'] = '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'
+               'api-key'] = 'enter your send in blue api key'
           api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
           subject = subject
           html_content = message
